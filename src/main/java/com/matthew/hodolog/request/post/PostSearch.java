@@ -1,4 +1,4 @@
-package com.matthew.hodolog.request;
+package com.matthew.hodolog.request.post;
 
 import lombok.Builder;
 import lombok.Builder.Default;

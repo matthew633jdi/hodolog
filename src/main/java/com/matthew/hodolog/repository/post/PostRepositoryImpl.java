@@ -1,7 +1,7 @@
-package com.matthew.hodolog.repository;
+package com.matthew.hodolog.repository.post;
 
 import com.matthew.hodolog.domain.Post;
-import com.matthew.hodolog.request.PostSearch;
+import com.matthew.hodolog.request.post.PostSearch;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 

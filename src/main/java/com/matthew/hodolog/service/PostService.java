@@ -3,10 +3,10 @@ package com.matthew.hodolog.service;
 import com.matthew.hodolog.domain.Post;
 import com.matthew.hodolog.domain.PostEditor;
 import com.matthew.hodolog.exception.PostNotFound;
-import com.matthew.hodolog.repository.PostRepository;
-import com.matthew.hodolog.request.PostCreate;
-import com.matthew.hodolog.request.PostEdit;
-import com.matthew.hodolog.request.PostSearch;
+import com.matthew.hodolog.repository.post.PostRepository;
+import com.matthew.hodolog.request.post.PostCreate;
+import com.matthew.hodolog.request.post.PostEdit;
+import com.matthew.hodolog.request.post.PostSearch;
 import com.matthew.hodolog.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

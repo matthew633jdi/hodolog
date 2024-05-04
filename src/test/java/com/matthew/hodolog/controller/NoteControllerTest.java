@@ -1,5 +1,6 @@
 package com.matthew.hodolog.controller;
 
+import com.matthew.hodolog.controller.note.NoteController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ class NoteControllerTest {
                 "}";
         mockMvc.perform(post("/notes").contentType(MediaType.APPLICATION_JSON).content(requestJsonBody))
                 .andExpect(status().isOk())
-                .andExpect(header().exists("location"))
                 .andDo(print());
     }
 

@@ -1,8 +1,8 @@
-package com.matthew.hodolog.controller;
+package com.matthew.hodolog.controller.post;
 
-import com.matthew.hodolog.request.PostCreate;
-import com.matthew.hodolog.request.PostEdit;
-import com.matthew.hodolog.request.PostSearch;
+import com.matthew.hodolog.request.post.PostCreate;
+import com.matthew.hodolog.request.post.PostEdit;
+import com.matthew.hodolog.request.post.PostSearch;
 import com.matthew.hodolog.response.PostResponse;
 import com.matthew.hodolog.service.PostService;
 import jakarta.servlet.http.HttpServletResponse;
