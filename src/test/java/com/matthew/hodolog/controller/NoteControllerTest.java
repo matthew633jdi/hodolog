@@ -3,6 +3,7 @@ package com.matthew.hodolog.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matthew.hodolog.controller.note.NoteController;
 import com.matthew.hodolog.request.note.NoteCreate;
+import com.matthew.hodolog.request.note.NoteSearch;
 import com.matthew.hodolog.response.NoteResponse;
 import com.matthew.hodolog.service.NoteService;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -47,7 +50,7 @@ class NoteControllerTest {
         String requestBody = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(post("/notes").contentType(MediaType.APPLICATION_JSON).content(requestBody))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"))
                 .andDo(print());
     }
@@ -83,6 +86,27 @@ class NoteControllerTest {
         mockMvc.perform(get("/notes/" + noteId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value(response.getTitle()))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("노트 조회")
+    void retrieve() throws Exception {
+        NoteResponse response = NoteResponse.builder()
+                .id(1L)
+                .createdDate(LocalDateTime.now())
+                .chapter("chapter test")
+                .title("title test")
+                .content("content test")
+                .keyword("keyword test")
+                .build();
+
+        List<NoteResponse> list = List.of(response);
+
+        when(noteService.getList(any(NoteSearch.class))).thenReturn(list);
+        mockMvc.perform(get("/notes")
+                        .param("date", LocalDate.now().toString()))
+                .andExpect(status().isOk())
                 .andDo(print());
     }
 }
