@@ -8,7 +8,6 @@ public class NoteCreate {
 
     @NotBlank(message = "PBS하실 본문을 입력해주세요.")
     private String chapter;
-    @NotBlank(message = "제목을 입력해주세요.")
     private String title;
     private String structure;
 

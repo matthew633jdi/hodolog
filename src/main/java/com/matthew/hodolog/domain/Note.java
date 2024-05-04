@@ -14,14 +14,16 @@ public class Note extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String chapter;
 
     private String title;
 
     private String structure;
+    @Column(nullable = false)
     @Lob
     private String content;
-
+    @Column(nullable = false)
     private String keyword;
 
     @Builder
